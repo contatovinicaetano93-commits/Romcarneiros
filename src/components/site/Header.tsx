@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { LOGO_WHITE_SRC } from "@/lib/images";
+import { LOGO_SRC } from "@/lib/images";
 
 export function Header() {
   return (
@@ -8,16 +8,16 @@ export function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 md:px-8">
         <Link href="/" className="inline-flex items-center">
           <Image
-            src={LOGO_WHITE_SRC}
+            src={LOGO_SRC}
             alt="ROM. CARNEIROS"
             width={140}
             height={53}
-            className="h-8 w-auto drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)] md:h-10"
+            className="logo-mark h-8 w-auto md:h-10"
             priority
           />
         </Link>
-        <nav className="flex items-center gap-5 text-[13px] font-semibold text-foam [text-shadow:0_1px_10px_rgba(0,0,0,0.65)] md:gap-8">
-          <a href="#inicio" className="hidden transition hover:text-foam/90 sm:inline">
+        <nav className="hero-nav flex items-center gap-5 text-[13px] font-semibold md:gap-8">
+          <a href="#inicio" className="hidden transition hover:opacity-90 sm:inline">
             Início
           </a>
           <a
@@ -26,10 +26,10 @@ export function Header() {
           >
             Destino
           </a>
-          <a href="#servicos" className="hidden transition hover:text-foam/90 sm:inline">
+          <a href="#servicos" className="hidden transition hover:opacity-90 sm:inline">
             Serviços
           </a>
-          <Link href="/reservar" className="transition hover:text-foam/90">
+          <Link href="/reservar" className="transition hover:opacity-90">
             Reservar
           </Link>
         </nav>
