@@ -12,8 +12,9 @@ export function AboutRom() {
               src={ROMEU_IMAGE}
               alt="Romeu Felipe — assinatura Rom"
               fill
-              className="object-cover"
+              className="object-cover object-[center_18%]"
               sizes="(max-width: 768px) 100vw, 40vw"
+              priority={false}
             />
           </div>
           <div className="absolute -bottom-4 -right-2 md:-right-4">

@@ -28,7 +28,7 @@ export const HERO_SLIDES = [
 
 export const DISCOVER_BACKGROUND = "/images/igreja-2.jpg";
 
-export const ROMEU_IMAGE = "/images/romeu-placeholder.jpg";
+export const ROMEU_IMAGE = "/images/romeu.jpg";
 
 /** Logo vazado (PNG transparente). */
 export const LOGO_SRC = "/brand/logo-rom-carneiros.png";
