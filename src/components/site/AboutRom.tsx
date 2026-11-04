@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ROMEU_IMAGE, LOGO_WHITE_SRC } from "@/lib/images";
+import { ROMEU_IMAGE, LOGO_SRC } from "@/lib/images";
 
 export function AboutRom() {
   return (
@@ -18,11 +18,11 @@ export function AboutRom() {
           </div>
           <div className="absolute -bottom-4 -right-2 md:-right-4">
             <Image
-              src={LOGO_WHITE_SRC}
+              src={LOGO_SRC}
               alt="ROM. CARNEIROS"
               width={96}
               height={36}
-              className="h-auto w-16 drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)] md:w-20"
+              className="h-auto w-16 md:w-20"
             />
           </div>
         </div>
