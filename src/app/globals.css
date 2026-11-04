@@ -142,6 +142,15 @@ body {
   animation: hero-fade 0.9s ease;
 }
 
+/* Tipografia legível sobre fotos do hero */
+.hero-copy {
+  color: #fff;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.75),
+    0 2px 16px rgba(0, 0, 0, 0.55),
+    0 0 1px rgba(0, 0, 0, 0.9);
+}
+
 .cta-green {
   background: var(--olive);
   color: var(--foam);

@@ -12,7 +12,7 @@ export function Footer() {
             src={LOGO_SRC}
             alt="ROM. CARNEIROS"
             width={140}
-            height={76}
+            height={53}
             className="h-10 w-auto"
           />
           <p className="mt-2 text-sm text-ink/45">{BRAND.domain}</p>
