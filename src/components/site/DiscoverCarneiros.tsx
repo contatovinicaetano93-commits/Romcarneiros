@@ -52,20 +52,20 @@ export function DiscoverCarneiros() {
             {COAST_STOPS.map((stop, index) => {
               const isLast = index === COAST_STOPS.length - 1;
               return (
-                <li key={stop.name} className="relative flex gap-3 pb-4 last:pb-0">
+                <li key={stop.name} className="flex gap-3">
                   <div className="relative flex w-2.5 shrink-0 flex-col items-center">
                     <span
-                      className={`z-10 mt-1.5 h-2.5 w-2.5 rounded-full ${
+                      className={`z-10 mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full ${
                         stop.highlight ? "bg-olive ring-4 ring-olive/20" : "bg-ink/25"
                       }`}
                       aria-hidden
                     />
                     {!isLast ? (
-                      <span className="absolute top-4 bottom-0 w-px bg-ink/15" aria-hidden />
+                      <span className="absolute top-4 -bottom-1.5 w-px bg-ink/15" aria-hidden />
                     ) : null}
                   </div>
                   <span
-                    className={`pt-0.5 text-sm ${
+                    className={`pt-0.5 text-sm ${isLast ? "" : "pb-4 "}${
                       stop.highlight
                         ? "font-semibold text-olive-deep"
                         : "font-medium text-ink/70"
