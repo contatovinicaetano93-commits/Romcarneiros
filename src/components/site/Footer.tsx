@@ -18,12 +18,12 @@ export function Footer() {
           <p className="mt-2 text-sm text-ink/45">{BRAND.domain}</p>
         </div>
         <div className="flex gap-5 text-sm text-ink/60">
-          <a href="#descobrir" className="hover:text-ink">
+          <Link href="/#descobrir" className="hover:text-ink">
             Destino
-          </a>
-          <a href="#servicos" className="hover:text-ink">
+          </Link>
+          <Link href="/#servicos" className="hover:text-ink">
             Serviços
-          </a>
+          </Link>
           <Link href="/reservar" className="hover:text-ink">
             Reservar
           </Link>

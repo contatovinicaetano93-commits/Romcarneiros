@@ -62,7 +62,7 @@ export function Hero() {
               </span>
             </Link>
           </div>
-          <div className="animate-rise-delay-2 mt-8 flex gap-2" aria-hidden>
+          <div className="animate-rise-delay-2 mt-8 flex gap-2">
             {HERO_SLIDES.map((slide, i) => (
               <button
                 key={slide.src}

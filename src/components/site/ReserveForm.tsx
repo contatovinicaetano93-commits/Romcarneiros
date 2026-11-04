@@ -11,6 +11,7 @@ export function ReserveForm() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("10:00");
   const [sent, setSent] = useState(false);
+  const [whatsappUrl, setWhatsappUrl] = useState("");
 
   const selectedServices = useMemo(
     () => SERVICES.filter((s) => selected.includes(s.id)),
@@ -33,6 +34,11 @@ export function ReserveForm() {
       startTime: time,
     };
 
+    const serviceNames = selectedServices.map((s) => s.name).join(", ");
+    const text = `Olá! Quero reservar no Rom Carneiros.\nNome: ${name}\nTelefone: ${phone}\nData: ${date} ${time}\nServiços: ${serviceNames}`;
+    const nextWhatsappUrl = `https://wa.me/${BRAND.whatsappE164}?text=${encodeURIComponent(text)}`;
+    window.open(nextWhatsappUrl, "_blank", "noopener,noreferrer");
+
     try {
       await fetch("/api/reservations", {
         method: "POST",
@@ -40,12 +46,10 @@ export function ReserveForm() {
         body: JSON.stringify(payload),
       });
     } catch {
-      // fallback WhatsApp abaixo
+      // o link da confirmação abre a mesma mensagem
     }
 
-    const serviceNames = selectedServices.map((s) => s.name).join(", ");
-    const text = `Olá! Quero reservar no Rom Carneiros.\nNome: ${name}\nTelefone: ${phone}\nData: ${date} ${time}\nServiços: ${serviceNames}`;
-    window.open(`https://wa.me/${BRAND.whatsappE164}?text=${encodeURIComponent(text)}`, "_blank");
+    setWhatsappUrl(nextWhatsappUrl);
     setSent(true);
   }
 
@@ -142,7 +146,11 @@ export function ReserveForm() {
 
       {sent ? (
         <p className="text-center text-sm text-olive-deep">
-          Pedido registrado. Se o WhatsApp não abriu, fale conosco pelo número do site.
+          Pedido registrado. Se o WhatsApp não abriu, fale conosco pelo{" "}
+          <a href={whatsappUrl} className="font-medium underline" target="_blank" rel="noreferrer">
+            {BRAND.whatsappDisplay}
+          </a>
+          .
         </p>
       ) : null}
     </form>

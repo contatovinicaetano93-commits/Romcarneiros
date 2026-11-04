@@ -1,9 +1,20 @@
 import { NextResponse } from "next/server";
+import { hasAdminSession } from "@/lib/admin-auth";
 import { addReservation, listReservations } from "@/lib/store";
 import type { Reservation } from "@/lib/types";
 
 export async function GET() {
-  return NextResponse.json({ reservations: listReservations() });
+  if (!(await hasAdminSession())) {
+    return NextResponse.json(
+      { error: "Não autorizado" },
+      { status: 401, headers: { "Cache-Control": "no-store" } },
+    );
+  }
+
+  return NextResponse.json(
+    { reservations: listReservations() },
+    { headers: { "Cache-Control": "no-store" } },
+  );
 }
 
 export async function POST(request: Request) {
