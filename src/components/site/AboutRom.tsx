@@ -22,7 +22,7 @@ export function AboutRom() {
               alt="ROM. CARNEIROS"
               width={96}
               height={36}
-              className="h-auto w-16 md:w-20"
+              className="logo-mark h-auto w-16 md:w-20"
             />
           </div>
         </div>
