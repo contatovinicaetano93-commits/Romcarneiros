@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ROMEU_IMAGE, LOGO_SRC } from "@/lib/images";
+import { ROMEU_IMAGE, LOGO_WHITE_SRC } from "@/lib/images";
 
 export function AboutRom() {
   return (
@@ -16,13 +16,13 @@ export function AboutRom() {
               sizes="(max-width: 768px) 100vw, 40vw"
             />
           </div>
-          <div className="absolute -bottom-4 -right-2 rounded-sm bg-foam p-2 shadow-md md:-right-4">
+          <div className="absolute -bottom-4 -right-2 md:-right-4">
             <Image
-              src={LOGO_SRC}
+              src={LOGO_WHITE_SRC}
               alt="ROM. CARNEIROS"
               width={96}
-              height={52}
-              className="h-auto w-16 md:w-20"
+              height={36}
+              className="h-auto w-16 drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)] md:w-20"
             />
           </div>
         </div>

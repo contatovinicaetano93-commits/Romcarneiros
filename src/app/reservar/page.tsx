@@ -20,7 +20,7 @@ export default function ReservarPage() {
               src={LOGO_SRC}
               alt="ROM. CARNEIROS"
               width={120}
-              height={64}
+              height={45}
               className="h-9 w-auto"
             />
           </Link>

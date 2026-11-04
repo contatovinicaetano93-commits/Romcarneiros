@@ -30,4 +30,7 @@ export const DISCOVER_BACKGROUND = "/images/igreja-2.jpg";
 
 export const ROMEU_IMAGE = "/images/romeu-placeholder.jpg";
 
-export const LOGO_SRC = "/brand/logo-rom-carneiros.jpg";
+/** Logo vazado (PNG transparente). */
+export const LOGO_SRC = "/brand/logo-rom-carneiros.png";
+/** Versão branca para uso sobre fotos / fundos escuros. */
+export const LOGO_WHITE_SRC = "/brand/logo-rom-carneiros-white.png";
