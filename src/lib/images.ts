@@ -1,28 +1,36 @@
-/** Fotos locais — Praia dos Carneiros (Wikimedia) + produção (Unsplash). */
+/** Carrossel do hero: Carneiros intercalado com serviços e Romeu. */
 export const HERO_SLIDES = [
   {
     src: "/images/igreja-1.jpg",
     alt: "Capela de São Benedito na Praia dos Carneiros, Tamandaré — PE",
   },
   {
-    src: "/images/praia-1.jpg",
-    alt: "Vista aérea da Praia dos Carneiros, Pernambuco",
-  },
-  {
-    src: "/images/svc-cabelo.jpg",
-    alt: "Produção de cabelo Rom",
+    src: "/images/svc-rosto.jpg",
+    alt: "Produção de maquiagem Rom",
   },
   {
     src: "/images/capela-close.jpg",
     alt: "Igrejinha de Carneiros entre coqueiros",
   },
   {
-    src: "/images/svc-rosto.jpg",
-    alt: "Produção de maquiagem Rom",
+    src: "/images/svc-cabelo.jpg",
+    alt: "Produção de cabelo Rom",
   },
   {
-    src: "/images/praia-2.jpg",
-    alt: "Igrejinha de São Benedito à beira-mar",
+    src: "/images/praia-1.jpg",
+    alt: "Vista aérea da Praia dos Carneiros, Pernambuco",
+  },
+  {
+    src: "/images/svc-unhas.jpg",
+    alt: "Produção de unhas Rom",
+  },
+  {
+    src: "/images/praia-3.jpg",
+    alt: "Praia dos Carneiros sob o sol do Nordeste",
+  },
+  {
+    src: "/images/romeu.jpg",
+    alt: "Romeu, assinatura Rom Carneiros",
   },
 ] as const;
 
