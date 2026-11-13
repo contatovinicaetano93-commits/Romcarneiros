@@ -1,4 +1,5 @@
 import { AboutRom } from "@/components/site/AboutRom";
+import { CarneirosBreak } from "@/components/site/CarneirosBreak";
 import { DiscoverCarneiros } from "@/components/site/DiscoverCarneiros";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
@@ -12,6 +13,7 @@ export default function HomePage() {
       <Header />
       <Hero />
       <DiscoverCarneiros />
+      <CarneirosBreak />
       <Services />
       <AboutRom />
       <ReserveCta />

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SERVICE_CATEGORIES, SERVICES } from "@/lib/catalog";
-import { DISCOVER_BACKGROUND } from "@/lib/images";
 
 export function Services() {
   return (
@@ -16,11 +15,10 @@ export function Services() {
           Catálogo completo no painel. Sinal de 30% em todos os serviços — o restante no local.
         </p>
 
-        {/* Grade 2 colunas no desktop: Cabelo|Rosto → foto → Unhas|Corpo (evita colunas vazias) */}
         <div className="mt-14 grid gap-12 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-14">
-          {SERVICE_CATEGORIES.flatMap((category, index) => {
+          {SERVICE_CATEGORIES.map((category) => {
             const items = SERVICES.filter((s) => s.category === category.id);
-            const card = (
+            return (
               <article key={category.id} className="group">
                 {/* Mesmo padrão oval da foto do Romeu — pronto para fotos reais da campanha */}
                 <div className="rom-blob-mask relative mx-auto aspect-[4/5] w-full max-w-[320px] overflow-hidden bg-beige">
@@ -45,28 +43,6 @@ export function Services() {
                 </ul>
               </article>
             );
-
-            // Foto da igrejinha entre o 2º e o 3º card (Rosto → Unhas)
-            if (index === 2) {
-              return [
-                <div
-                  key="carneiros-break"
-                  className="relative -mx-5 aspect-[16/10] overflow-hidden bg-beige sm:col-span-2 sm:mx-0 sm:aspect-[21/9]"
-                >
-                  <Image
-                    src={DISCOVER_BACKGROUND}
-                    alt="Igrejinha de São Benedito na Praia dos Carneiros"
-                    fill
-                    className="object-cover object-center"
-                    sizes="100vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-olive-deep/25 via-transparent to-transparent" />
-                </div>,
-                card,
-              ];
-            }
-
-            return [card];
           })}
         </div>
 
