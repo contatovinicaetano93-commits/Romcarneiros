@@ -16,24 +16,25 @@ export function Services() {
           Catálogo completo no painel. Sinal de 30% em todos os serviços — o restante no local.
         </p>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-12 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-8">
           {SERVICE_CATEGORIES.flatMap((category, index) => {
             const items = SERVICES.filter((s) => s.category === category.id);
             const card = (
               <article key={category.id} className="group">
-                <div className="relative aspect-[4/5] overflow-hidden bg-beige">
+                {/* Mesmo padrão oval da foto do Romeu — pronto para fotos reais da campanha */}
+                <div className="rom-blob-mask relative mx-auto aspect-[4/5] w-full max-w-[280px] overflow-hidden bg-beige sm:max-w-none">
                   <Image
                     src={category.image}
                     alt={`Serviço ${category.label}`}
                     fill
                     className="object-cover transition duration-700 group-hover:scale-[1.03]"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    sizes="(max-width: 640px) 280px, (max-width: 1024px) 40vw, 22vw"
                   />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent p-4 pt-16">
-                    <h3 className="font-display text-2xl tracking-wide text-foam">{category.label}</h3>
-                  </div>
                 </div>
-                <p className="mt-4 text-sm text-ink/65">{category.blurb}</p>
+                <h3 className="mt-6 font-sans text-2xl font-bold tracking-tight text-ink">
+                  {category.label}
+                </h3>
+                <p className="mt-2 text-sm text-ink/65">{category.blurb}</p>
                 <ul className="mt-4 space-y-2 text-sm text-ink/80">
                   {items.map((service) => (
                     <li key={service.id} className="service-dot relative pl-4">
