@@ -16,19 +16,20 @@ export function Services() {
           Catálogo completo no painel. Sinal de 30% em todos os serviços — o restante no local.
         </p>
 
-        <div className="mt-14 grid gap-12 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-8">
+        {/* Grade 2 colunas no desktop: Cabelo|Rosto → foto → Unhas|Corpo (evita colunas vazias) */}
+        <div className="mt-14 grid gap-12 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-14">
           {SERVICE_CATEGORIES.flatMap((category, index) => {
             const items = SERVICES.filter((s) => s.category === category.id);
             const card = (
               <article key={category.id} className="group">
                 {/* Mesmo padrão oval da foto do Romeu — pronto para fotos reais da campanha */}
-                <div className="rom-blob-mask relative mx-auto aspect-[4/5] w-full max-w-[280px] overflow-hidden bg-beige sm:max-w-none">
+                <div className="rom-blob-mask relative mx-auto aspect-[4/5] w-full max-w-[320px] overflow-hidden bg-beige">
                   <Image
                     src={category.image}
                     alt={`Serviço ${category.label}`}
                     fill
                     className="object-cover transition duration-700 group-hover:scale-[1.03]"
-                    sizes="(max-width: 640px) 280px, (max-width: 1024px) 40vw, 22vw"
+                    sizes="(max-width: 640px) 320px, 40vw"
                   />
                 </div>
                 <h3 className="mt-6 font-sans text-2xl font-bold tracking-tight text-ink">
@@ -50,7 +51,7 @@ export function Services() {
               return [
                 <div
                   key="carneiros-break"
-                  className="relative -mx-5 aspect-[16/10] overflow-hidden bg-beige sm:col-span-2 sm:mx-0 sm:aspect-[21/9] lg:col-span-4"
+                  className="relative -mx-5 aspect-[16/10] overflow-hidden bg-beige sm:col-span-2 sm:mx-0 sm:aspect-[21/9]"
                 >
                   <Image
                     src={DISCOVER_BACKGROUND}
