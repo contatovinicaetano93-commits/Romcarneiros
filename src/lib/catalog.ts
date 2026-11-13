@@ -42,18 +42,18 @@ export const SERVICE_CATEGORIES: {
     id: "cabelo",
     label: "Cabelo",
     blurb: "Escova, corte, cor, mega, hidratação, lavagem e penteado.",
-    image: "/images/prod-hair.jpg",
+    image: "/images/svc-cabelo.jpg",
   },
   {
     id: "rosto",
     label: "Rosto",
     blurb: "Maquilagem, sobrancelha e barba.",
-    image: "/images/prod-makeup.jpg",
+    image: "/images/svc-rosto.jpg",
   },
   {
     id: "unhas",
     label: "Unhas",
     blurb: "Unha, pé e mão e esmaltação em gel.",
-    image: "/images/prod-nails.jpg",
+    image: "/images/svc-unhas.jpg",
   },
 ];
