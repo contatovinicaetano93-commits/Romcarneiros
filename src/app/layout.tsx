@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: `%s · ${BRAND.name}`,
   },
   description:
-    "Operação de fim de ano na Praia dos Carneiros: cabelo, rosto, unhas e corpo. Reserve com sinal de 30%.",
+    "Operação de fim de ano na Praia dos Carneiros: cabelo, rosto e unhas. Reserve com sinal de 30%.",
   metadataBase: new URL(`https://${BRAND.domain}`),
 };
 

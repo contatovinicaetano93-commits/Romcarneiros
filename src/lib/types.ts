@@ -1,4 +1,4 @@
-export type ServiceCategory = "cabelo" | "rosto" | "unhas" | "corpo";
+export type ServiceCategory = "cabelo" | "rosto" | "unhas";
 
 export type Service = {
   id: string;
