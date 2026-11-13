@@ -9,7 +9,7 @@ export const HERO_SLIDES = [
     alt: "Vista aérea da Praia dos Carneiros, Pernambuco",
   },
   {
-    src: "/images/prod-hair.jpg",
+    src: "/images/svc-cabelo.jpg",
     alt: "Produção de cabelo Rom",
   },
   {
@@ -17,7 +17,7 @@ export const HERO_SLIDES = [
     alt: "Igrejinha de Carneiros entre coqueiros",
   },
   {
-    src: "/images/prod-makeup.jpg",
+    src: "/images/svc-rosto.jpg",
     alt: "Produção de maquiagem Rom",
   },
   {
