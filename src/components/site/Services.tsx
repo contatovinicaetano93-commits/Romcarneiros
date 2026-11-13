@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SERVICE_CATEGORIES, SERVICES } from "@/lib/catalog";
+import { DISCOVER_BACKGROUND } from "@/lib/images";
 
 export function Services() {
   return (
@@ -16,9 +17,9 @@ export function Services() {
         </p>
 
         <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {SERVICE_CATEGORIES.map((category) => {
+          {SERVICE_CATEGORIES.flatMap((category, index) => {
             const items = SERVICES.filter((s) => s.category === category.id);
-            return (
+            const card = (
               <article key={category.id} className="group">
                 <div className="relative aspect-[4/5] overflow-hidden bg-beige">
                   <Image
@@ -42,6 +43,28 @@ export function Services() {
                 </ul>
               </article>
             );
+
+            // Foto da igrejinha entre o 2º e o 3º card (Rosto → Unhas)
+            if (index === 2) {
+              return [
+                <div
+                  key="carneiros-break"
+                  className="relative -mx-5 aspect-[16/10] overflow-hidden bg-beige sm:col-span-2 sm:mx-0 sm:aspect-[21/9] lg:col-span-4"
+                >
+                  <Image
+                    src={DISCOVER_BACKGROUND}
+                    alt="Igrejinha de São Benedito na Praia dos Carneiros"
+                    fill
+                    className="object-cover object-center"
+                    sizes="100vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-olive-deep/25 via-transparent to-transparent" />
+                </div>,
+                card,
+              ];
+            }
+
+            return [card];
           })}
         </div>
 
