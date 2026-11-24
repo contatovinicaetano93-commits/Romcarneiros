@@ -136,6 +136,8 @@ export function ReserveForm() {
         </label>
       </div>
 
+      <p className="text-xs leading-relaxed text-ink/45">{OPERATION.lateToleranceNote}</p>
+
       <button
         type="submit"
         disabled={selected.length === 0}
