@@ -16,7 +16,11 @@ export const OPERATION = {
   openHour: 10,
   closeHour: 22,
   depositPercent: 30,
-  cancelPolicy: "Em caso de atraso, no-show ou cancelamento, o sinal não é reembolsável.",
+  lateToleranceMinutes: 10,
+  /** Aviso sutil no fluxo de reserva. */
+  lateToleranceNote: "Tolerância de 10 minutos de atraso no horário marcado.",
+  cancelPolicy:
+    "Toleramos até 10 minutos de atraso. Passado esse prazo, no-show ou cancelamento, o sinal não é reembolsável.",
 } as const;
 
 export const DEPOSIT_PERCENT = OPERATION.depositPercent;
