@@ -29,6 +29,35 @@ export type Reservation = {
   status: ReservationStatus;
   depositCents: number;
   totalCents: number | null;
+  /** Referência externa Itaú do sinal (ex.: res_xxx_sinal). */
+  depositExternalReference?: string;
   notes?: string;
+  createdAt: string;
+};
+
+/** Tipo do lançamento no Caixa — sinal online ou restante no local. */
+export type PaymentKind = "sinal" | "restante";
+
+/** Canal de liquidação na Conta Digital Itaú. */
+export type PaymentChannel = "pix" | "card_machine" | "manual";
+
+export type PaymentStatus = "pending" | "paid" | "failed" | "refunded" | "cancelled";
+
+/**
+ * Lançamento de caixa (ledger).
+ * Sinal e restante liquidam na mesma Conta Digital Itaú;
+ * `externalReference` separa os dois na conciliação.
+ */
+export type LedgerEntry = {
+  id: string;
+  reservationId: string;
+  kind: PaymentKind;
+  channel: PaymentChannel;
+  status: PaymentStatus;
+  amountCents: number;
+  externalReference: string;
+  providerPaymentId: string | null;
+  nsu: string | null;
+  paidAt: string | null;
   createdAt: string;
 };
