@@ -36,9 +36,12 @@ function ensureRestanteEntry(reservationId: string, totalCents: number, depositC
     providerPaymentId: null,
     nsu: null,
     paidAt: null,
+    reconciledAt: null,
     createdAt: new Date().toISOString(),
   });
 }
+
+export { ensureRestanteEntry };
 
 /**
  * Aplica evento Itaú (webhook ou extrato) ao ledger e à reserva.

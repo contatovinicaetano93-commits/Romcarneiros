@@ -78,6 +78,7 @@ export async function POST(request: Request) {
     providerPaymentId: charge.providerPaymentId,
     nsu: null,
     paidAt: null,
+    reconciledAt: null,
     createdAt: new Date().toISOString(),
   };
   addLedgerEntry(ledgerEntry);

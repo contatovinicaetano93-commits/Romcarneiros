@@ -59,5 +59,24 @@ export type LedgerEntry = {
   providerPaymentId: string | null;
   nsu: string | null;
   paidAt: string | null;
+  /** Preenchido quando a linha bate com o extrato diário Itaú. */
+  reconciledAt: string | null;
   createdAt: string;
+};
+
+export type ExtractRow = {
+  date: string | null;
+  amountCents: number;
+  nsu: string | null;
+  externalReference: string | null;
+  raw: string;
+};
+
+export type ExtractMatchStatus = "matched" | "unmatched" | "already_reconciled";
+
+export type ExtractMatchResult = {
+  row: ExtractRow;
+  status: ExtractMatchStatus;
+  ledgerEntryId: string | null;
+  message: string;
 };
