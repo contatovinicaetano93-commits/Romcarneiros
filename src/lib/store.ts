@@ -43,7 +43,14 @@ export function findLedgerByExternalReference(externalReference: string): Ledger
 export function updateLedgerStatus(
   id: string,
   status: PaymentStatus,
-  extras?: { paidAt?: string | null; nsu?: string | null; providerPaymentId?: string | null },
+  extras?: {
+    paidAt?: string | null;
+    nsu?: string | null;
+    providerPaymentId?: string | null;
+    channel?: LedgerEntry["channel"];
+    amountCents?: number;
+    reconciledAt?: string | null;
+  },
 ): LedgerEntry | undefined {
   const entry = ledger.find((e) => e.id === id);
   if (!entry) return undefined;
@@ -53,6 +60,26 @@ export function updateLedgerStatus(
   if (extras?.providerPaymentId !== undefined) {
     entry.providerPaymentId = extras.providerPaymentId;
   }
+  if (extras?.channel !== undefined) entry.channel = extras.channel;
+  if (extras?.amountCents !== undefined) entry.amountCents = extras.amountCents;
+  if (extras?.reconciledAt !== undefined) entry.reconciledAt = extras.reconciledAt;
+  return entry;
+}
+
+export function findPendingRestante(reservationId: string): LedgerEntry | undefined {
+  return ledger.find(
+    (e) => e.reservationId === reservationId && e.kind === "restante" && e.status === "pending",
+  );
+}
+
+export function listPendingRestante(): LedgerEntry[] {
+  return listLedgerEntries().filter((e) => e.kind === "restante" && e.status === "pending");
+}
+
+export function markLedgerReconciled(id: string, reconciledAt = new Date().toISOString()): LedgerEntry | undefined {
+  const entry = ledger.find((e) => e.id === id);
+  if (!entry) return undefined;
+  entry.reconciledAt = reconciledAt;
   return entry;
 }
 

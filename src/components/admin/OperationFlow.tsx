@@ -1,8 +1,8 @@
 const STEPS = [
   { title: "Reserva", detail: "Site / WhatsApp" },
-  { title: "Sinal 30%", detail: "PIX Conta Digital Itaú" },
-  { title: "Atendimento", detail: "Tolerância 10 min" },
-  { title: "Caixa", detail: "Restante na maquininha" },
+  { title: "Sinal 30%", detail: "PIX Itaú (automático)" },
+  { title: "Atendimento", detail: "Baixa manual do restante" },
+  { title: "Caixa", detail: "Extrato diário / conciliação" },
 ] as const;
 
 export function OperationFlow() {
