@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
-import { isAsaasConfigured } from "@/lib/asaas/client";
+import { isPaymentsConfigured } from "@/lib/payments";
 
 export function GET() {
   return NextResponse.json({
     ok: true,
     service: "rom-carneiros",
-    asaasConfigured: isAsaasConfigured(),
+    paymentProvider: "itau",
+    itauConfigured: isPaymentsConfigured(),
     timestamp: new Date().toISOString(),
   });
 }

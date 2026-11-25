@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import { hasAdminSession } from "@/lib/admin-auth";
-import { addReservation, listReservations } from "@/lib/store";
-import type { Reservation } from "@/lib/types";
+import { OPERATION } from "@/lib/constants";
+import { createCharge, depositExternalReference } from "@/lib/payments";
+import { addLedgerEntry, addReservation, listReservations } from "@/lib/store";
+import type { LedgerEntry, Reservation } from "@/lib/types";
 
 export async function GET() {
   if (!(await hasAdminSession())) {
@@ -24,14 +26,31 @@ export async function POST(request: Request) {
     serviceIds?: string[];
     date?: string;
     startTime?: string;
+    totalCents?: number | null;
   };
 
   if (!body.customerName || !body.customerPhone || !body.serviceIds?.length || !body.date) {
     return NextResponse.json({ error: "Dados incompletos" }, { status: 400 });
   }
 
+  const reservationId = `res_${Date.now()}`;
+  const totalCents = body.totalCents ?? null;
+  const depositCents =
+    totalCents != null ? Math.round((totalCents * OPERATION.depositPercent) / 100) : 0;
+  const externalReference = depositExternalReference(reservationId);
+
+  const charge = await createCharge({
+    reservationId,
+    kind: "sinal",
+    channel: "pix",
+    amountCents: depositCents,
+    customerName: body.customerName,
+    customerPhone: body.customerPhone,
+    externalReference,
+  });
+
   const reservation: Reservation = {
-    id: `res_${Date.now()}`,
+    id: reservationId,
     customerName: body.customerName,
     customerPhone: body.customerPhone,
     customerEmail: body.customerEmail,
@@ -39,12 +58,40 @@ export async function POST(request: Request) {
     date: body.date,
     startTime: body.startTime ?? "10:00",
     status: "pending_deposit",
-    depositCents: 0,
-    totalCents: null,
+    depositCents,
+    totalCents,
+    depositExternalReference: externalReference,
     notes: body.notes,
     createdAt: new Date().toISOString(),
   };
 
   addReservation(reservation);
-  return NextResponse.json({ reservation }, { status: 201 });
+
+  const ledgerEntry: LedgerEntry = {
+    id: `led_${Date.now()}`,
+    reservationId,
+    kind: "sinal",
+    channel: "pix",
+    status: "pending",
+    amountCents: depositCents,
+    externalReference,
+    providerPaymentId: charge.providerPaymentId,
+    nsu: null,
+    paidAt: null,
+    createdAt: new Date().toISOString(),
+  };
+  addLedgerEntry(ledgerEntry);
+
+  return NextResponse.json(
+    {
+      reservation,
+      deposit: {
+        externalReference,
+        providerPaymentId: charge.providerPaymentId,
+        paymentUrl: charge.paymentUrl,
+        amountCents: depositCents,
+      },
+    },
+    { status: 201 },
+  );
 }
